@@ -56,6 +56,16 @@ public class GlobalExceptionHandlerTest
     }
 
     @Test
+    public void handleMessageManagementExceptionTest()
+    {
+        MessageManagementException exception = new MessageManagementException(ERROR_MESSAGE);
+        ResponseEntity<ErrorDto> response = globalExceptionHandler.handleMessageManagementException(exception);
+        assertNotNull(response.getBody());
+        assertEquals(ERROR_MESSAGE, response.getBody().getError());
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
     public void handleUnauthorizedExceptionTest()
     {
         UnauthorizedException exception = new UnauthorizedException(ERROR_MESSAGE);

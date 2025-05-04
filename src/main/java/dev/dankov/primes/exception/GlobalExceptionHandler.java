@@ -42,6 +42,12 @@ public class GlobalExceptionHandler
         return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(MessageManagementException.class)
+    public ResponseEntity<ErrorDto> handleMessageManagementException(MessageManagementException e)
+    {
+        return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<ErrorDto> handleUnauthorizedException(UnauthorizedException e)
     {
