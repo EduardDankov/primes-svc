@@ -1,9 +1,8 @@
 package dev.dankov.primes.controller;
 
 import dev.dankov.primes.dto.request.CreateUserRequestDto;
-import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Hidden
 public class LoginController
 {
     private final AuthenticationManager authenticationManager;

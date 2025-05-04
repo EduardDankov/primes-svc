@@ -91,4 +91,50 @@ public class UserController
             LOGGER.info("Finished getUserById for ID: {}", id);
         }
     }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
+    @Operation(summary = "Update user information by ID")
+    public ResponseEntity<UserResponseDto> updateUser(
+        @PathVariable(name = "id")
+        @Parameter(description = "User ID", required = true)
+        UUID id,
+
+        @NonNull
+        @Validated
+        @RequestBody
+        @Parameter(required = true)
+        CreateUserRequestDto createUserRequestDto
+    )
+    {
+        try
+        {
+            LOGGER.info("Started updateUser for ID: {}", id);
+            UserStatusResponseDto userStatusResponseDto = userService.updateUser(id, createUserRequestDto);
+            return new ResponseEntity<>(userStatusResponseDto, HttpStatus.OK);
+        } finally
+        {
+            LOGGER.info("Finished updateUser for ID: {}", id);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
+    @Operation(summary = "Delete user by ID")
+    public ResponseEntity<Void> deleteUser(
+        @PathVariable(name = "id")
+        @Parameter(description = "User ID", required = true)
+        UUID id
+    )
+    {
+        try
+        {
+            LOGGER.info("Started deleteUser for ID: {}", id);
+            userService.deleteUser(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } finally
+        {
+            LOGGER.info("Finished deleteUser for ID: {}", id);
+        }
+    }
 }

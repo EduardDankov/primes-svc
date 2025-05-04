@@ -11,6 +11,7 @@ import dev.dankov.primes.exception.UserManagementException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class UserService
 {
     private final UserRepository userRepository;
 
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     private final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
@@ -43,7 +45,7 @@ public class UserService
 
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(createUserRequestDto.getUsername());
-        userEntity.setPassword(createUserRequestDto.getPassword());
+        userEntity.setPassword(encode(createUserRequestDto.getPassword()));
 
         try
         {
@@ -72,6 +74,42 @@ public class UserService
         return convertToUserResponseDto(user);
     }
 
+    public UserStatusResponseDto updateUser(UUID userId, CreateUserRequestDto createUserRequestDto)
+    {
+        UserEntity user = userRepository.findById(userId)
+            .orElseThrow(() -> new InvalidArgumentException(USER_NOT_FOUND_MESSAGE));
+
+        user.setUsername(createUserRequestDto.getUsername());
+        user.setPassword(encode(createUserRequestDto.getPassword()));
+
+        try
+        {
+            UserEntity updatedUser = userRepository.save(user);
+            return convertToUserStatusResponseDto(updatedUser, UserStatus.UPDATED);
+        } catch (Exception e)
+        {
+            var message = String.format("Failed to update user with ID '%s': %s", userId, e.getMessage());
+            LOGGER.warn(message);
+            throw new UserManagementException(message);
+        }
+    }
+
+    public void deleteUser(UUID userId)
+    {
+        UserEntity user = userRepository.findById(userId)
+            .orElseThrow(() -> new InvalidArgumentException(USER_NOT_FOUND_MESSAGE));
+
+        try
+        {
+            userRepository.delete(user);
+        } catch (Exception e)
+        {
+            var message = String.format("Failed to delete user with ID '%s': %s", userId, e.getMessage());
+            LOGGER.warn(message);
+            throw new UserManagementException(message);
+        }
+    }
+
     private UserResponseDto convertToUserResponseDto(UserEntity user)
     {
         UserResponseDto userResponseDto = new UserResponseDto();
@@ -87,5 +125,10 @@ public class UserService
         userStatusResponseDto.setId(user.getId());
         userStatusResponseDto.setUsername(user.getUsername());
         return userStatusResponseDto;
+    }
+
+    private String encode(String password)
+    {
+        return encoder.encode(password);
     }
 }

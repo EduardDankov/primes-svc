@@ -23,6 +23,12 @@ public class GlobalExceptionHandler
         return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<Void> handleUnauthorizedException(UnauthorizedException e)
+    {
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
     @ExceptionHandler(UserManagementException.class)
     public ResponseEntity<ErrorDto> handleUserManagementException(UserManagementException e)
     {
