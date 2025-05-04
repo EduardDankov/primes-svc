@@ -58,6 +58,10 @@ public class ChatResponseDto extends ChatKey
         {
             return false;
         }
+        if (!super.equals(o))
+        {
+            return false;
+        }
         ChatResponseDto that = (ChatResponseDto) o;
         return Objects.equals(createdBy, that.createdBy) &&
             Objects.equals(createdWith, that.createdWith);
