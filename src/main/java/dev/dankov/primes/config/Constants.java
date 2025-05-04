@@ -10,11 +10,14 @@ public class Constants
     public static final String USER_NOT_FOUND_MESSAGE = "User was not found";
 
     // Property validation constants
+    public static final int MESSAGE_MAX_LENGTH = 1000;
     public static final int USERNAME_MIN_LENGTH = 6;
     public static final int USERNAME_MAX_LENGTH = 20;
 
     // Property validation errors
     public static final String ERROR_MESSAGE = "Error message must not be empty";
+    public static final String MESSAGE_TEXT_MESSAGE = "Message text must not be empty";
+    public static final String MESSAGE_LENGTH_MESSAGE = "Message must not be longer than 1000 characters";
     public static final String PASSWORD_MESSAGE = "Password must not be empty";
     public static final String USERNAME_MESSAGE = "Username must not be empty";
     public static final String USERNAME_LENGTH_MESSAGE = "Username must be between 6 and 20 characters long";

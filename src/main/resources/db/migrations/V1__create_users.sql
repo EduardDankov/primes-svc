@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS users
+CREATE TABLE IF NOT EXISTS primes.users
 (
     user_id  UUID         NOT NULL,
     username VARCHAR(20)  NOT NULL,
@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS users
     CONSTRAINT pk_users PRIMARY KEY (user_id)
 );
 
-ALTER TABLE users ADD CONSTRAINT uc_users_username UNIQUE (username);
+ALTER TABLE primes.users ADD CONSTRAINT uc_users_username UNIQUE (username);
