@@ -15,7 +15,7 @@ import java.util.List;
 @Configuration
 public class SwaggerConfig
 {
-    private static final String BEARER_TOKEN = "Bearer <token>";
+    private static final String BEARER_TOKEN = "Bearer <credentials>";
 
     @Bean
     public OpenAPI openAPI(@Value("${spring.application.name}") String appName)
@@ -33,15 +33,15 @@ public class SwaggerConfig
                 .type(SecurityScheme.Type.HTTP)
                 .scheme("bearer")
                 .bearerFormat("JWT")
-                .description("Authorization: Bearer <token>"));
+                .description("Authorization: Bearer <credentials>"));
     }
 
     private Info buildInfo(String appName)
     {
         return new Info()
             .title(appName)
-            .description("Description")
-            .contact(new Contact().name("Name").email("Email"))
+            .description("Primes API")
+            .contact(new Contact().name("Eduard Dankov").email("contact@dankov.dev"))
             .version("1.0");
     }
 }

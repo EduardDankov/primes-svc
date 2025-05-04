@@ -4,6 +4,7 @@ public class Constants
 {
     // Error messages
     public static final String INVALID_ENUM_MESSAGE = "No constant with text %s found";
+    public static final String USER_NOT_FOUND_MESSAGE = "User was not found";
 
     // Property validation constants
     public static final int USERNAME_MIN_LENGTH = 6;
