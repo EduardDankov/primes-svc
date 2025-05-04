@@ -15,6 +15,10 @@ public class CreateUserRequestDto extends UserKey
     @Schema(example = "password")
     private String password;
 
+    public CreateUserRequestDto()
+    {
+    }
+
     public String getPassword()
     {
         return password;

@@ -12,6 +12,10 @@ public class UserStatusResponseDto extends UserResponseDto
     @NotNull
     private UserStatus status;
 
+    public UserStatusResponseDto()
+    {
+    }
+
     public UserStatus getStatus()
     {
         return status;

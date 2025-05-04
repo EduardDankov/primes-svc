@@ -18,6 +18,10 @@ public class UserResponseDto extends UserKey
     @Schema(example = "00000000-0000-0000-0000-000000000000")
     private UUID id;
 
+    public UserResponseDto()
+    {
+    }
+
     public UUID getId()
     {
         return id;

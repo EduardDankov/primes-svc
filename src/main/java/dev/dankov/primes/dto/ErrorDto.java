@@ -11,6 +11,10 @@ public class ErrorDto
     @NotBlank(message = ERROR_MESSAGE)
     private String error;
 
+    public ErrorDto()
+    {
+    }
+
     public ErrorDto(String error)
     {
         this.error = error;

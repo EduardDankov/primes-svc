@@ -95,7 +95,7 @@ public class UserController
     @PutMapping("/{id}")
     @PreAuthorize("isAuthenticated()")
     @Operation(summary = "Update user information by ID")
-    public ResponseEntity<UserResponseDto> updateUser(
+    public ResponseEntity<UserStatusResponseDto> updateUser(
         @PathVariable(name = "id")
         @Parameter(description = "User ID", required = true)
         UUID id,

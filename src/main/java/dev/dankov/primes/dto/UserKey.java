@@ -17,6 +17,10 @@ public class UserKey
     @Schema(example = "username")
     private String username;
 
+    public UserKey()
+    {
+    }
+
     public String getUsername()
     {
         return username;
