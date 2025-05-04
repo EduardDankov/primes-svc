@@ -3,6 +3,9 @@ package dev.dankov.primes.config;
 public class Constants
 {
     // Error messages
+    public static final String ACCESS_DENIED_MESSAGE = "Access Denied";
+    public static final String CHAT_CONFLICT_MESSAGE = "Chat between %s and %s already exists";
+    public static final String CHAT_NOT_FOUND_MESSAGE = "Chat was not found";
     public static final String INVALID_ENUM_MESSAGE = "No constant with text %s found";
     public static final String USER_NOT_FOUND_MESSAGE = "User was not found";
 
