@@ -103,7 +103,6 @@ public class UserControllerTest
         doNothing().when(userService).deleteUser(USER_ID);
 
         ResponseEntity<Void> actualResponse = userController.deleteUser(USER_ID);
-
         assertEquals(HttpStatus.NO_CONTENT, actualResponse.getStatusCode());
     }
 }

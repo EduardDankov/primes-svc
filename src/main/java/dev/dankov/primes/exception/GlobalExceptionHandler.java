@@ -2,19 +2,38 @@ package dev.dankov.primes.exception;
 
 import dev.dankov.primes.dto.ErrorDto;
 import io.swagger.v3.oas.annotations.Hidden;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import static dev.dankov.primes.config.Constants.ACCESS_DENIED_MESSAGE;
+
 @RestControllerAdvice
 @Hidden
 public class GlobalExceptionHandler
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<ErrorDto> handleAuthenticationException(AuthenticationException e)
     {
-        return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.FORBIDDEN);
+        LOGGER.warn(e.getMessage());
+        return new ResponseEntity<>(new ErrorDto(ACCESS_DENIED_MESSAGE), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(ChatManagementException.class)
+    public ResponseEntity<ErrorDto> handleChatManagementException(ChatManagementException e)
+    {
+        return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleEntityNotFoundException(EntityNotFoundException e)
+    {
+        return new ResponseEntity<>(new ErrorDto(e.getMessage()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(InvalidArgumentException.class)
@@ -24,9 +43,9 @@ public class GlobalExceptionHandler
     }
 
     @ExceptionHandler(UnauthorizedException.class)
-    public ResponseEntity<Void> handleUnauthorizedException(UnauthorizedException e)
+    public ResponseEntity<ErrorDto> handleUnauthorizedException(UnauthorizedException e)
     {
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(new ErrorDto(ACCESS_DENIED_MESSAGE), HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(UserManagementException.class)

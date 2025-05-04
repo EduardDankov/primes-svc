@@ -6,6 +6,7 @@ import dev.dankov.primes.dto.response.UserResponseDto;
 import dev.dankov.primes.dto.response.UserStatusResponseDto;
 import dev.dankov.primes.entity.UserEntity;
 import dev.dankov.primes.enums.UserStatus;
+import dev.dankov.primes.exception.EntityNotFoundException;
 import dev.dankov.primes.exception.InvalidArgumentException;
 import dev.dankov.primes.exception.UserManagementException;
 import org.slf4j.Logger;
@@ -70,14 +71,14 @@ public class UserService
     public UserResponseDto getUser(UUID userId)
     {
         UserEntity user = userRepository.findById(userId)
-            .orElseThrow(() -> new InvalidArgumentException(USER_NOT_FOUND_MESSAGE));
+            .orElseThrow(() -> new EntityNotFoundException(USER_NOT_FOUND_MESSAGE));
         return convertToUserResponseDto(user);
     }
 
     public UserStatusResponseDto updateUser(UUID userId, CreateUserRequestDto createUserRequestDto)
     {
         UserEntity user = userRepository.findById(userId)
-            .orElseThrow(() -> new InvalidArgumentException(USER_NOT_FOUND_MESSAGE));
+            .orElseThrow(() -> new EntityNotFoundException(USER_NOT_FOUND_MESSAGE));
 
         user.setUsername(createUserRequestDto.getUsername());
         user.setPassword(encode(createUserRequestDto.getPassword()));
@@ -97,7 +98,7 @@ public class UserService
     public void deleteUser(UUID userId)
     {
         UserEntity user = userRepository.findById(userId)
-            .orElseThrow(() -> new InvalidArgumentException(USER_NOT_FOUND_MESSAGE));
+            .orElseThrow(() -> new EntityNotFoundException(USER_NOT_FOUND_MESSAGE));
 
         try
         {

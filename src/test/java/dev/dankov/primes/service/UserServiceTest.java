@@ -6,6 +6,7 @@ import dev.dankov.primes.dto.response.UserResponseDto;
 import dev.dankov.primes.dto.response.UserStatusResponseDto;
 import dev.dankov.primes.entity.UserEntity;
 import dev.dankov.primes.enums.UserStatus;
+import dev.dankov.primes.exception.EntityNotFoundException;
 import dev.dankov.primes.exception.InvalidArgumentException;
 import dev.dankov.primes.exception.UserManagementException;
 import org.junit.jupiter.api.BeforeAll;
@@ -135,8 +136,8 @@ public class UserServiceTest
         try
         {
             userService.getUser(USER_ID);
-            fail("Expected InvalidArgumentException to be thrown");
-        } catch (InvalidArgumentException e)
+            fail("Expected EntityNotFoundException to be thrown");
+        } catch (EntityNotFoundException e)
         {
             assertEquals(USER_NOT_FOUND_MESSAGE, e.getMessage());
         }
@@ -178,8 +179,8 @@ public class UserServiceTest
         try
         {
             userService.updateUser(USER_ID, createUserRequestDto);
-            fail("Expected InvalidArgumentException to be thrown");
-        } catch (InvalidArgumentException e)
+            fail("Expected EntityNotFoundException to be thrown");
+        } catch (EntityNotFoundException e)
         {
             assertEquals(USER_NOT_FOUND_MESSAGE, e.getMessage());
         }
@@ -206,8 +207,8 @@ public class UserServiceTest
         try
         {
             userService.deleteUser(USER_ID);
-            fail("Expected InvalidArgumentException to be thrown");
-        } catch (InvalidArgumentException e)
+            fail("Expected EntityNotFoundException to be thrown");
+        } catch (EntityNotFoundException e)
         {
             assertEquals(USER_NOT_FOUND_MESSAGE, e.getMessage());
         }
