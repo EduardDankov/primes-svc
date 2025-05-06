@@ -1,6 +1,10 @@
 package dev.dankov.primes.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.dankov.primes.dto.request.CreateUserRequestDto;
+import dev.dankov.primes.dto.response.UserStatusResponseDto;
+import dev.dankov.primes.entity.UserEntity;
+import dev.dankov.primes.enums.UserStatus;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +26,8 @@ public class LoginController
 {
     private final AuthenticationManager authenticationManager;
 
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+
     @Autowired
     public LoginController(AuthenticationManager authenticationManager)
     {
@@ -29,7 +35,7 @@ public class LoginController
     }
 
     @PostMapping("/v1/login")
-    public ResponseEntity<Void> login(
+    public ResponseEntity<UserStatusResponseDto> login(
         @NonNull
         @Validated
         @RequestBody
@@ -46,6 +52,14 @@ public class LoginController
         {
             throw new BadCredentialsException("Invalid username or password");
         }
-        return new ResponseEntity<>(HttpStatus.OK);
+
+        UserEntity user = MAPPER.convertValue(authenticationResponse.getDetails(), UserEntity.class);
+
+        UserStatusResponseDto userStatusResponseDto = new UserStatusResponseDto();
+        userStatusResponseDto.setStatus(UserStatus.AUTHENTICATED);
+        userStatusResponseDto.setId(user.getId());
+        userStatusResponseDto.setUsername(user.getUsername());
+
+        return new ResponseEntity<>(userStatusResponseDto, HttpStatus.OK);
     }
 }

@@ -44,15 +44,12 @@ public class PrimesAuthenticationProvider implements AuthenticationProvider
 
     private Authentication authenticateAgainstDatabase(String username, String password)
     {
-        Optional<UserEntity> user = userRepository.findByUsername(username);
-        if (user.isEmpty())
-        {
-            throw new AuthenticationException(USER_NOT_FOUND_MESSAGE);
-        }
+        UserEntity user = userRepository.findByUsername(username)
+            .orElseThrow(() -> new AuthenticationException(USER_NOT_FOUND_MESSAGE));
 
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, password, List.of());
         auth.setDetails(user);
-        if (!encoder.matches(password, user.get().getPassword()))
+        if (!encoder.matches(password, user.getPassword()))
         {
             auth.setAuthenticated(false);
         }
