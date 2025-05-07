@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS primes.chats
     CONSTRAINT pk_chats PRIMARY KEY (chat_id)
 );
 
-ALTER TABLE primes.chats ADD CONSTRAINT FK_CHATS_ON_CREATED_BY FOREIGN KEY (created_by) REFERENCES primes.users (user_id);
-ALTER TABLE primes.chats ADD CONSTRAINT FK_CHATS_ON_CREATED_WITH FOREIGN KEY (created_with) REFERENCES primes.users (user_id);
+ALTER TABLE primes.chats ADD CONSTRAINT FK_CHATS_ON_CREATED_BY FOREIGN KEY (created_by) REFERENCES primes.users (user_id) ON DELETE CASCADE;
+ALTER TABLE primes.chats ADD CONSTRAINT FK_CHATS_ON_CREATED_WITH FOREIGN KEY (created_with) REFERENCES primes.users (user_id) ON DELETE CASCADE;
