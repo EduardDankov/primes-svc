@@ -29,7 +29,7 @@ public class SecurityConfig
     {
         http.csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(requests -> requests
-                .requestMatchers(HttpMethod.POST, "/v1/user/auth", "/v1/user", "/v1/login")
+                .requestMatchers(HttpMethod.POST, "/v1/user", "/v1/login")
                 .permitAll()
                 .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/webjars/**", "/swagger-resources/**", "/v3/api-docs/**", "/swagger.json")
                 .permitAll()
