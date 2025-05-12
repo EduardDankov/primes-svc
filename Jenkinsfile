@@ -7,6 +7,28 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Checkstyle') {
+            steps {
+                script {
+                    try {
+                        sh './gradlew clean checkstyleMain checkstyleTest'
+                    } catch (Exception e) {
+                        error "Checkstyle failed. Check the logs for details."
+                    }
+                }
+            }
+        }
+        stage('PMD') {
+            steps {
+                script {
+                    try {
+                        sh './gradlew clean pmdMain pmdTest'
+                    } catch (Exception e) {
+                        error "PMD failed. Check the logs for details."
+                    }
+                }
+            }
+        }
         stage('Build') {
             steps {
                 script {
