@@ -7,7 +7,6 @@ import dev.dankov.primes.dto.response.UserStatusResponseDto;
 import dev.dankov.primes.entity.UserEntity;
 import dev.dankov.primes.enums.UserStatus;
 import dev.dankov.primes.exception.EntityNotFoundException;
-import dev.dankov.primes.exception.InvalidArgumentException;
 import dev.dankov.primes.exception.UserManagementException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

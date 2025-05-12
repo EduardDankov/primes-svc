@@ -3,7 +3,6 @@ package dev.dankov.primes.controller;
 import dev.dankov.primes.dto.request.CreateMessageRequestDto;
 import dev.dankov.primes.dto.response.MessageResponseDto;
 import dev.dankov.primes.dto.response.MessageStatusResponseDto;
-import dev.dankov.primes.dto.response.MessageStatusResponseDtoTest;
 import dev.dankov.primes.enums.MessageStatus;
 import dev.dankov.primes.service.MessageService;
 import org.junit.jupiter.api.BeforeAll;

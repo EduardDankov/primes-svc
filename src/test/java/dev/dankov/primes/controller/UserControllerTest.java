@@ -1,6 +1,5 @@
 package dev.dankov.primes.controller;
 
-import dev.dankov.primes.dto.ErrorDto;
 import dev.dankov.primes.dto.request.CreateUserRequestDto;
 import dev.dankov.primes.dto.response.UserResponseDto;
 import dev.dankov.primes.dto.response.UserStatusResponseDto;
