@@ -19,9 +19,14 @@ public enum UserStatus
         this.status = status;
     }
 
+    public String getStatus()
+    {
+        return status;
+    }
+
     public static UserStatus fromString(String status)
     {
-        for (UserStatus userStatus : UserStatus.values())
+        for (UserStatus userStatus : values())
         {
             if (userStatus.name().equalsIgnoreCase(status))
             {

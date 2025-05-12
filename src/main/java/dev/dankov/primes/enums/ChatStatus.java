@@ -17,9 +17,14 @@ public enum ChatStatus
         this.status = status;
     }
 
+    public String getStatus()
+    {
+        return status;
+    }
+
     public static ChatStatus fromString(String status)
     {
-        for (ChatStatus chatStatus : ChatStatus.values())
+        for (ChatStatus chatStatus : values())
         {
             if (chatStatus.name().equalsIgnoreCase(status))
             {

@@ -28,7 +28,7 @@ public class ChatController
 {
     private final ChatService chatService;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ChatController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChatController.class);
 
     @Autowired
     public ChatController(ChatService chatService)

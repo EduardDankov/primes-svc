@@ -28,7 +28,7 @@ public class ChatService
     private final ChatRepository chatRepository;
     private final UserRepository userRepository;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ChatService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChatService.class);
 
     @Autowired
     public ChatService(ChatRepository chatRepository, UserRepository userRepository)

@@ -19,9 +19,9 @@ import static org.mockito.Mockito.when;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PrimesAuthenticationProviderTest
 {
-    private final String USERNAME = "username";
-    private final String PASSWORD = "password";
-    private final String PASSWORD2 = "password2";
+    private static final String USERNAME = "username";
+    private static final String PASSWORD = "password";
+    private static final String PASSWORD2 = "password2";
 
     private PrimesAuthenticationProvider provider;
     private UserRepository userRepository;

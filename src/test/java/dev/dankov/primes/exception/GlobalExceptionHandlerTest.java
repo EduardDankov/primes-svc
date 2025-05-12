@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GlobalExceptionHandlerTest
 {
-    private final String ERROR_MESSAGE = "error message";
+    private static final String ERROR_MESSAGE = "error message";
 
     private final GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
 

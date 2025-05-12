@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
-import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.UUID;
@@ -35,7 +34,7 @@ public class MessageService
     private final ChatRepository chatRepository;
     private final UserRepository userRepository;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(MessageService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MessageService.class);
 
     @Autowired
     public MessageService(MessageRepository messageRepository, ChatRepository chatRepository, UserRepository userRepository)

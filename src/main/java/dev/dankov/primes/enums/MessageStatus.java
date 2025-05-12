@@ -16,9 +16,14 @@ public enum MessageStatus
         this.status = status;
     }
 
+    public String getStatus()
+    {
+        return status;
+    }
+
     public static MessageStatus fromString(String status)
     {
-        for (MessageStatus messageStatus : MessageStatus.values())
+        for (MessageStatus messageStatus : values())
         {
             if (messageStatus.name().equalsIgnoreCase(status))
             {

@@ -1,7 +1,6 @@
 package dev.dankov.primes.dto.response;
 
 import dev.dankov.primes.dto.ChatKey;
-import dev.dankov.primes.dto.request.CreateChatRequestDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;

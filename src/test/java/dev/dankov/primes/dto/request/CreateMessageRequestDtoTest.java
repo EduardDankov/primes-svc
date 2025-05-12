@@ -8,15 +8,15 @@ import static org.hamcrest.Matchers.allOf;
 
 public class CreateMessageRequestDtoTest
 {
-     @Test
-     public void validateBeanTest()
-     {
-         assertThat(CreateMessageRequestDto.class, allOf(
-             hasValidBeanConstructor(),
-             hasValidGettersAndSetters(),
-             hasValidBeanEquals(),
-             hasValidBeanToString(),
-             hasValidBeanHashCode()
-         ));
-     }
+    @Test
+    public void validateBeanTest()
+    {
+        assertThat(CreateMessageRequestDto.class, allOf(
+            hasValidBeanConstructor(),
+            hasValidGettersAndSetters(),
+            hasValidBeanEquals(),
+            hasValidBeanToString(),
+            hasValidBeanHashCode()
+        ));
+    }
 }

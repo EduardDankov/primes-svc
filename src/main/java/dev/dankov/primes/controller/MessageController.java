@@ -29,7 +29,7 @@ public class MessageController
 {
     private final MessageService messageService;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
 
     @Autowired
     public MessageController(MessageService messageService)

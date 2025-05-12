@@ -27,7 +27,7 @@ public class UserController
 {
     private final UserService userService;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     public UserController(UserService userService)
