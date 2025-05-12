@@ -35,7 +35,7 @@ public class MessageService
     private final ChatRepository chatRepository;
     private final UserRepository userRepository;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(MessageService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MessageService.class);
 
     @Autowired
     public MessageService(MessageRepository messageRepository, ChatRepository chatRepository, UserRepository userRepository)
