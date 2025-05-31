@@ -169,7 +169,7 @@ public class MessageServiceTest
 
     @Test
     public void getMessagesTestUnauthorized()
-    {;
+    {
         UserEntity userEntity = new UserEntity();
         userEntity.setId(USER_ID);
         userEntity.setUsername(USERNAME);

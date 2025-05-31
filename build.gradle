@@ -1,5 +1,7 @@
 plugins {
 	id 'java'
+	id 'checkstyle'
+	id 'pmd'
 	id 'org.springframework.boot' version '3.4.5'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id 'io.swagger.core.v3.swagger-gradle-plugin' version '2.2.28'
@@ -49,4 +51,15 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+checkstyle {
+	maxWarnings = 0
+	configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+}
+
+pmd {
+	toolVersion = "7.13.0"
+	ignoreFailures = false
+	ruleSetFiles = files('config/pmd/ruleset.xml')
 }

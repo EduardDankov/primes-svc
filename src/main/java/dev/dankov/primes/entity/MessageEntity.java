@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.SourceType;
 
 import java.time.Instant;
 import java.util.Objects;
@@ -46,7 +44,7 @@ public class MessageEntity
     }
 
     @PrePersist
-    private void prePersist()
+    public void prePersist()
     {
         createdAt = Instant.now();
     }

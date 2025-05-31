@@ -7,7 +7,6 @@ import dev.dankov.primes.dto.response.UserStatusResponseDto;
 import dev.dankov.primes.entity.UserEntity;
 import dev.dankov.primes.enums.UserStatus;
 import dev.dankov.primes.exception.EntityNotFoundException;
-import dev.dankov.primes.exception.InvalidArgumentException;
 import dev.dankov.primes.exception.UserManagementException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +26,7 @@ public class UserService
     private final UserRepository userRepository;
 
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    private final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     public UserService(UserRepository userRepository)
