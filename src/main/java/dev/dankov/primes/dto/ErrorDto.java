@@ -3,7 +3,6 @@ package dev.dankov.primes.dto;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
-import java.util.UUID;
 
 import static dev.dankov.primes.config.Constants.ERROR_MESSAGE;
 
