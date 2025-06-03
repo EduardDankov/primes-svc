@@ -42,7 +42,7 @@ public class ErrorDto
             return false;
         }
         ErrorDto errorDto = (ErrorDto) o;
-        return !Objects.equals(error, errorDto.error);
+        return Objects.equals(error, errorDto.error);
     }
 
     @Override
