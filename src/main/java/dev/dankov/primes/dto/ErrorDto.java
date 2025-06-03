@@ -10,9 +10,10 @@ import static dev.dankov.primes.config.Constants.ERROR_MESSAGE;
 public class ErrorDto
 {
     @NotBlank(message = ERROR_MESSAGE)
-    private String error;;
+    private String error;
 
-    public ErrorDto() {
+    public ErrorDto()
+    {
     }
 
     public ErrorDto(String error)
