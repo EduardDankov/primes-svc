@@ -3,16 +3,16 @@ package dev.dankov.primes.dto;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
+import java.util.UUID;
 
 import static dev.dankov.primes.config.Constants.ERROR_MESSAGE;
 
 public class ErrorDto
 {
     @NotBlank(message = ERROR_MESSAGE)
-    private String error;
+    private String error;;
 
-    public ErrorDto()
-    {
+    public ErrorDto() {
     }
 
     public ErrorDto(String error)
@@ -42,7 +42,7 @@ public class ErrorDto
             return false;
         }
         ErrorDto errorDto = (ErrorDto) o;
-        return Objects.equals(error, errorDto.error);
+        return !Objects.equals(error, errorDto.error);
     }
 
     @Override
